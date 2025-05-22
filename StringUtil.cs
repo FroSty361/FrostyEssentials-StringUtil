@@ -36,6 +36,19 @@ namespace Frosty.Essentials.StringUtil
 
     // Methods
 
+    public static string Center(this string text, int totalWidth, char paddingChar = ' ')
+    {
+      if (string.IsNullOrEmpty(text) || totalWidth <= text.Length)
+      {
+        return text;
+      }
+
+      int padding = totalWidth - text.Length;
+      int padLeft = padding / 2 + text.Length;
+
+      return text.PadLeft(padLeft, paddingChar).PadRight(totalWidth, paddingChar);
+    }
+
     public static string Reverse(string input)
     {
       string output = "";
